@@ -10,7 +10,7 @@
     {
       "name": "work-state",
       "source": "./plugin",
-      "version": "1.2.0",
+      "version": "1.2.1",
       "description": "Personal work intelligence facility. Harvests evidence of your work across GitHub, Gmail, Slack, Google Docs, scsiwyg, and Claude Code sessions into a local-first, schema-governed event store, then derives daily digests, weekly reports, and longitudinal intelligence. 9 skills + a local Next.js kanban/dashboard at port 3333.",
       "author": {
         "name": "Atomic 47 Labs",

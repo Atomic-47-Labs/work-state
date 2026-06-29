@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import fs from 'fs'
 import path from 'path'
 import yaml from 'js-yaml'
+import { listEventDates, readDayEvents } from '@/lib/events'
 
 const WORK_STATE = path.join(process.env.HOME!, 'work-state')
 
@@ -97,26 +98,10 @@ export async function GET(req: NextRequest) {
 
     const eventsDir = path.join(WORK_STATE, 'events')
 
-    if (fs.existsSync(eventsDir)) {
-      const dateDirs = fs.readdirSync(eventsDir)
-        .filter(d => /^\d{4}-\d{2}-\d{2}$/.test(d))
-        .sort()
-
-      for (const dateDir of dateDirs) {
+    for (const dateDir of listEventDates(eventsDir)) {
         if (new Date(dateDir + 'T00:00:00Z') < cutoff) continue
-        const dayPath = path.join(eventsDir, dateDir)
-        let files: string[]
-        try {
-          files = fs.readdirSync(dayPath).filter(f => f.endsWith('.json'))
-        } catch {
-          continue
-        }
-        for (const file of files) {
+        for (const event of readDayEvents<WorkEvent>(eventsDir, dateDir)) {
           try {
-            const event = JSON.parse(
-              fs.readFileSync(path.join(dayPath, file), 'utf-8')
-            ) as WorkEvent
-
             // Re-attribute: manifest v2 explicit repo bindings always win —
             // this fixes both "unsorted" events and events misattributed at
             // harvest time (e.g. ai26-10-project-plan stored as project-sunshine).
@@ -143,7 +128,6 @@ export async function GET(req: NextRequest) {
             }
           } catch {}
         }
-      }
     }
 
     // 14-day sparkline keys

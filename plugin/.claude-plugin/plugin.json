@@ -1,6 +1,6 @@
 {
   "name": "work-state",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Personal work intelligence facility. Harvests evidence of your work across GitHub, Gmail, Slack, Google Docs, scsiwyg, and Claude Code sessions into a local-first, schema-governed data store. Derives daily digests, weekly reports, and longitudinal intelligence from that evidence. Includes a local Next.js kanban/dashboard UI at port 3333.",
   "author": {
     "name": "Atomic 47 Labs",

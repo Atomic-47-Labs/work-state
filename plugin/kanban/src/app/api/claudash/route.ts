@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
-import fs from 'fs'
 import path from 'path'
+import { listEventDates, readDayEvents } from '@/lib/events'
 
 const WORK_STATE = path.join(process.env.HOME!, 'work-state')
 
@@ -64,19 +64,12 @@ function weekOf(iso: string) {
 function readAllEvents(): { builds: BuildEvent[]; bursts: BurstEvent[] } {
   const eventsDir = path.join(WORK_STATE, 'events')
   const builds: BuildEvent[] = [], bursts: BurstEvent[] = []
-  if (!fs.existsSync(eventsDir)) return { builds, bursts }
 
-  for (const dateDir of fs.readdirSync(eventsDir).filter(d => /^\d{4}-\d{2}-\d{2}$/.test(d)).sort()) {
-    const dayPath = path.join(eventsDir, dateDir)
-    let files: string[]
-    try { files = fs.readdirSync(dayPath).filter(f => f.startsWith('claude-code-') && f.endsWith('.json')) }
-    catch { continue }
-    for (const file of files) {
-      try {
-        const ev = JSON.parse(fs.readFileSync(path.join(dayPath, file), 'utf-8'))
-        if (ev.type === 'build') builds.push(ev as BuildEvent)
-        else if (ev.type === 'tool-burst') bursts.push(ev as BurstEvent)
-      } catch { /* skip */ }
+  for (const dateDir of listEventDates(eventsDir)) {
+    for (const ev of readDayEvents<{ surface?: string; type?: string }>(eventsDir, dateDir)) {
+      if (ev.surface !== 'claude-code') continue
+      if (ev.type === 'build') builds.push(ev as unknown as BuildEvent)
+      else if (ev.type === 'tool-burst') bursts.push(ev as unknown as BurstEvent)
     }
   }
   return { builds, bursts }

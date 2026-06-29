@@ -2,8 +2,11 @@ import { NextRequest, NextResponse } from 'next/server'
 import fs from 'fs'
 import path from 'path'
 import yaml from 'js-yaml'
+import { listEventDates, readDayEvents } from '@/lib/events'
 
 const WORK_STATE = path.join(process.env.HOME!, 'work-state')
+
+interface TimelineEvent { surface: string; type: string; project?: string }
 
 interface DayBucket {
   total: number
@@ -32,38 +35,21 @@ export async function GET(req: NextRequest) {
   const daily: Record<string, DayBucket> = {}
   const eventsDir = path.join(WORK_STATE, 'events')
 
-  if (fs.existsSync(eventsDir)) {
-    const dateDirs = fs.readdirSync(eventsDir)
-      .filter(d => /^\d{4}-\d{2}-\d{2}$/.test(d))
-      .sort()
-
-    for (const dateDir of dateDirs) {
+  for (const dateDir of listEventDates(eventsDir)) {
       if (new Date(dateDir + 'T00:00:00Z') < cutoff) continue
 
       if (!daily[dateDir]) {
         daily[dateDir] = { total: 0, by_surface: {}, by_type: {}, by_project: {} }
       }
 
-      const dayPath = path.join(eventsDir, dateDir)
-      let files: string[]
-      try {
-        files = fs.readdirSync(dayPath).filter(f => f.endsWith('.json'))
-      } catch {
-        continue
-      }
-
       const bucket = daily[dateDir]
-      for (const file of files) {
-        try {
-          const ev = JSON.parse(fs.readFileSync(path.join(dayPath, file), 'utf-8'))
-          bucket.total++
-          bucket.by_surface[ev.surface] = (bucket.by_surface[ev.surface] || 0) + 1
-          bucket.by_type[ev.type]       = (bucket.by_type[ev.type]       || 0) + 1
-          const proj = ev.project || 'unsorted'
-          bucket.by_project[proj]       = (bucket.by_project[proj]       || 0) + 1
-        } catch {}
+      for (const ev of readDayEvents<TimelineEvent>(eventsDir, dateDir)) {
+        bucket.total++
+        bucket.by_surface[ev.surface] = (bucket.by_surface[ev.surface] || 0) + 1
+        bucket.by_type[ev.type]       = (bucket.by_type[ev.type]       || 0) + 1
+        const proj = ev.project || 'unsorted'
+        bucket.by_project[proj]       = (bucket.by_project[proj]       || 0) + 1
       }
-    }
   }
 
   const empty = (): DayBucket => ({ total: 0, by_surface: {}, by_type: {}, by_project: {} })
