@@ -1,0 +1,34 @@
+{
+  "id": "gmail-share-2026-04-29-1d8a55",
+  "surface": "gmail",
+  "type": "share",
+  "timestamp": "2026-04-29T11:42:18Z",
+  "project": "project-sunshine",
+  "themes": [],
+  "evidence": {
+    "thread_id": "189f4c8e2a1b3d44",
+    "message_id": "189f4c8e2a1b3d44-msg-7",
+    "direction": "outbound",
+    "from": "david@atomic47labs.com",
+    "to": ["bill@partner.example", "karen@partner.example"],
+    "cc": ["ron@partner.example"],
+    "subject": "Re: Project Sunshine — bare-metal cost model v3",
+    "excerpt": "Updated the cost model to reflect the Cologix VAN3 quote we got yesterday — net effect on Year 1 OpEx is...",
+    "has_attachments": true,
+    "attachment_names": ["sunshine-cost-model-v3.xlsx"],
+    "labels": ["SENT", "IMPORTANT", "Worksona/Sunshine"],
+    "in_reply_to": "189f4c8e2a1b3d44-msg-6",
+    "is_thread_starter": false
+  },
+  "metrics": {
+    "body_word_count": 412,
+    "recipient_count": 3,
+    "is_reply": true,
+    "thread_position": 7
+  },
+  "raw": {
+    "_comment": "Full Gmail API message payload, untruncated."
+  },
+  "ingested_at": "2026-04-30T06:01:14Z",
+  "harvester_version": "1.0.0"
+}

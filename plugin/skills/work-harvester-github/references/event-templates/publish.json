@@ -1,0 +1,28 @@
+{
+  "id": "github-publish-2026-04-29-7e2b04",
+  "surface": "github",
+  "type": "publish",
+  "timestamp": "2026-04-29T18:12:00Z",
+  "project": "scsiwyg",
+  "themes": [],
+  "evidence": {
+    "repo": "atomic47-labs/scsiwyg",
+    "release_id": 12345678,
+    "tag_name": "v0.4.0",
+    "name": "v0.4.0 — Drafts & Channel Scoping",
+    "body": "Drafts now save to channel-specific buffers...",
+    "url": "https://github.com/atomic47-labs/scsiwyg/releases/tag/v0.4.0",
+    "prerelease": false,
+    "draft": false,
+    "assets_count": 0
+  },
+  "metrics": {
+    "body_word_count": 187,
+    "asset_total_bytes": 0
+  },
+  "raw": {
+    "_comment": "Full release API response."
+  },
+  "ingested_at": "2026-04-30T06:00:14Z",
+  "harvester_version": "1.0.0"
+}

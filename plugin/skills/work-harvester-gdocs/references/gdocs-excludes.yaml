@@ -1,0 +1,35 @@
+# Google Docs filter rules
+# Docs matching any of these are skipped during harvests.
+
+# ----- Exclude by folder path (substring match) -----
+exclude_folder_paths:
+  - "/Personal/"
+  - "/Receipts/"
+  - "/_archive/"
+  - "/Tax/"
+
+# ----- Exclude by title pattern (regex, case-insensitive) -----
+exclude_title_patterns:
+  - "^DRAFT - dont harvest"
+  - "Receipt"
+  - "Invoice"
+
+# ----- Exclude by mime type -----
+# Only Docs by default; turn these on to include Sheets/Slides.
+include_sheets: false
+include_slides: false
+include_forms: false
+
+# ----- Body capture knobs -----
+capture_excerpt: false       # include first 500 chars of body in evidence.excerpt
+capture_full_body: false     # NEVER default-on. Archival use only.
+
+# ----- Edit session threshold -----
+# Below this word delta, the edit doesn't count as a session worth recording.
+min_edit_words: 10
+
+# ----- Permissions -----
+# When a doc is shared, emit one share event per principal added.
+emit_share_per_principal: true
+# When a doc becomes public, emit a publish event.
+emit_publish_on_link_share: true

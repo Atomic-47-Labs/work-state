@@ -1,0 +1,34 @@
+{
+  "id": "gmail-receive-2026-04-29-c4e891",
+  "surface": "gmail",
+  "type": "receive",
+  "timestamp": "2026-04-29T09:14:33Z",
+  "project": "scsiwyg",
+  "themes": [],
+  "evidence": {
+    "thread_id": "189f4c8e2a1b3d50",
+    "message_id": "189f4c8e2a1b3d50-msg-1",
+    "direction": "inbound",
+    "from": "hany@partner.example",
+    "to": ["david@atomic47labs.com"],
+    "cc": [],
+    "subject": "Architecture deck — comments on slide 12",
+    "excerpt": "David, looked at the latest revision. The data flow on slide 12 is cleaner now but I think we should...",
+    "has_attachments": false,
+    "attachment_names": [],
+    "labels": ["INBOX", "IMPORTANT", "CATEGORY_PERSONAL"],
+    "in_reply_to": null,
+    "is_thread_starter": true
+  },
+  "metrics": {
+    "body_word_count": 287,
+    "recipient_count": 1,
+    "is_reply": false,
+    "thread_position": 1
+  },
+  "raw": {
+    "_comment": "Full Gmail API message payload, untruncated."
+  },
+  "ingested_at": "2026-04-30T06:01:14Z",
+  "harvester_version": "1.0.0"
+}

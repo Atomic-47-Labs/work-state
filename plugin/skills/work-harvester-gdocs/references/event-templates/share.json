@@ -1,0 +1,24 @@
+{
+  "id": "gdocs-share-2026-04-29-2e5b71",
+  "surface": "gdocs",
+  "type": "share",
+  "timestamp": "2026-04-29T17:08:33Z",
+  "project": "project-sunshine",
+  "themes": [],
+  "evidence": {
+    "doc_id": "1a2b3c4d5e6f7g8h9i0j",
+    "title": "Project Sunshine — Cost Model v3",
+    "url": "https://docs.google.com/document/d/1a2b3c4d5e6f7g8h9i0j/edit",
+    "shared_with": "bill@partner.example",
+    "share_role": "commenter",
+    "share_type": "user"
+  },
+  "metrics": {
+    "current_word_count": 4218
+  },
+  "raw": {
+    "_comment": "Full Drive permission payload."
+  },
+  "ingested_at": "2026-04-30T06:03:14Z",
+  "harvester_version": "1.0.0"
+}

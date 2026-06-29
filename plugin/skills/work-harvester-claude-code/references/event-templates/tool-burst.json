@@ -1,0 +1,37 @@
+{
+  "id": "claude-code-tool-burst-2026-05-18-a3f2c91d-2",
+  "surface": "claude-code",
+  "type": "tool-burst",
+  "timestamp": "2026-05-18T15:31:18Z",
+  "actor": "david@atomic47.co",
+  "project": "scsiwyg",
+  "themes": [],
+  "evidence": {
+    "session_id": "a3f2c91d-7b4e-4c8a-9f12-8e6d2b4a1c3f",
+    "burst_index": 2,
+    "burst_start": "2026-05-18T15:31:18Z",
+    "burst_end": "2026-05-18T15:34:02Z",
+    "burst_duration_seconds": 164,
+    "tool_calls": {
+      "Read": 12,
+      "Edit": 18,
+      "MultiEdit": 4,
+      "Bash": 6
+    },
+    "tool_calls_total": 40,
+    "dominant_tool": "Edit",
+    "files_touched": [
+      "skills/repo-publisher/scripts/decide.py",
+      "skills/repo-publisher/scripts/score.py"
+    ],
+    "git_branch": "feature/repo-publisher-v2",
+    "preceding_idle_seconds": 142
+  },
+  "metrics": {
+    "burst_intensity": 14.63,
+    "burst_size_class": "intense"
+  },
+  "raw": null,
+  "ingested_at": "2026-05-19T07:00:14Z",
+  "harvester_version": "1.0.0"
+}

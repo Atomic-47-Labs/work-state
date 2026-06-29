@@ -1,0 +1,47 @@
+{
+  "id": "claude-code-cost-2026-05-18-7c4f2a",
+  "surface": "claude-code",
+  "type": "cost",
+  "timestamp": "2026-05-18T00:00:00Z",
+  "actor": "david@atomic47.co",
+  "project": "unsorted",
+  "themes": [],
+  "evidence": {
+    "date": "2026-05-18",
+    "sessions": 4,
+    "lines_added": 1247,
+    "lines_removed": 384,
+    "commits": 9,
+    "pull_requests": 1,
+    "tool_acceptance": {
+      "Edit": {"accepted": 28, "rejected": 3},
+      "MultiEdit": {"accepted": 7, "rejected": 1},
+      "Write": {"accepted": 4, "rejected": 0},
+      "NotebookEdit": {"accepted": 0, "rejected": 0}
+    },
+    "tokens_by_model": {
+      "claude-opus-4-7": {
+        "input_tokens": 184320,
+        "output_tokens": 41218,
+        "cache_creation_input_tokens": 287100,
+        "cache_read_input_tokens": 9482104
+      },
+      "claude-haiku-4-5": {
+        "input_tokens": 22418,
+        "output_tokens": 4823,
+        "cache_creation_input_tokens": 12044,
+        "cache_read_input_tokens": 184220
+      }
+    },
+    "estimated_cost_usd": 18.42
+  },
+  "metrics": {
+    "total_tokens": 10218247,
+    "estimated_cost_usd": 18.42
+  },
+  "raw": {
+    "_note": "full Admin API record kept here for audit; redacted in this template"
+  },
+  "ingested_at": "2026-05-19T07:01:22Z",
+  "harvester_version": "1.0.0"
+}

@@ -1,0 +1,30 @@
+{
+  "id": "github-build-2026-04-29-a3f9c1",
+  "surface": "github",
+  "type": "build",
+  "timestamp": "2026-04-29T14:23:51Z",
+  "project": "scsiwyg",
+  "themes": [],
+  "evidence": {
+    "repo": "atomic47-labs/scsiwyg",
+    "sha": "a3f9c12d4e7b8a1f0c2d3e4f5678901234abcdef",
+    "branch": "main",
+    "message": "Add MCP draft tool with channel scoping\n\nDrafts now save to channel-specific buffers; resolves #142.",
+    "url": "https://github.com/atomic47-labs/scsiwyg/commit/a3f9c12d4e7b8a1f0c2d3e4f5678901234abcdef",
+    "files_changed": 8,
+    "additions": 247,
+    "deletions": 53,
+    "is_merge": false,
+    "pr_ref": null
+  },
+  "metrics": {
+    "lines_changed": 300,
+    "files_changed": 8,
+    "commit_size_class": "medium"
+  },
+  "raw": {
+    "_comment": "In a real event, this contains the full untruncated GitHub API response — author, committer, parents, tree, verification, stats, files, etc. Truncated here for the template."
+  },
+  "ingested_at": "2026-04-30T06:00:14Z",
+  "harvester_version": "1.0.0"
+}

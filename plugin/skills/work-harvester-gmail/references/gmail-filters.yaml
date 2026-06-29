@@ -1,0 +1,48 @@
+# Gmail receive filter rules
+# Inbound messages matching ANY of these are skipped (not written as events).
+# Tune freely — these are signal-vs-noise heuristics, not security controls.
+
+# ----- Category-based filters (Gmail's built-in categories) -----
+skip_categories:
+  - CATEGORY_PROMOTIONS    # marketing
+  - CATEGORY_SOCIAL        # social network notifications
+  - CATEGORY_UPDATES       # automated updates, receipts, newsletters
+  - CATEGORY_FORUMS        # mailing lists
+
+# ----- Sender-based filters (regex on the from address) -----
+skip_from_patterns:
+  - '^noreply@'
+  - '^no-reply@'
+  - '^donotreply@'
+  - '^notifications?@github\.com$'
+  - '^notifications?@slack\.com$'
+  - '^notifications?@(bitbucket|gitlab)\.com$'
+  - '@mail\.notion\.so$'
+  - '@em\.linkedin\.com$'
+  - '@e\.linkedin\.com$'
+  - '^mailer-daemon@'
+
+# ----- Subject-based filters (regex, case-insensitive) -----
+skip_subject_patterns:
+  - '^Your .* receipt'
+  - '^Re: \[GitHub\]'
+  - '^\[GitHub\]'
+  - '^\[Slack\]'
+  - 'unsubscribe'
+
+# ----- Label-based filters (Gmail user labels you want to mute) -----
+skip_labels:
+  - "Newsletters"          # add your own muted labels here
+  - "Receipts"
+
+# ----- Content-type filters -----
+skip_if_only_part:
+  - text/calendar          # calendar invites are signal that lives elsewhere
+
+# ----- Override: never skip -----
+# Threads where the user has replied OR threads explicitly starred
+# are KEPT regardless of the rules above. (Encoded in harvester logic, not here.)
+
+# ----- Knobs -----
+keep_replied_threads: true     # if you've replied, keep all subsequent inbound msgs
+keep_starred_threads: true     # if a thread is starred, keep everything in it

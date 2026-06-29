@@ -1,0 +1,56 @@
+{
+  "id": "claude-code-build-2026-05-18-a3f2c91d",
+  "surface": "claude-code",
+  "type": "build",
+  "timestamp": "2026-05-18T14:22:07Z",
+  "actor": "david@atomic47.co",
+  "project": "scsiwyg",
+  "themes": [],
+  "evidence": {
+    "session_id": "a3f2c91d-7b4e-4c8a-9f12-8e6d2b4a1c3f",
+    "cwd": "/Users/david/repos/atomic47-labs/scsiwyg",
+    "git_branch": "feature/repo-publisher-v2",
+    "version": "2.1.14",
+    "started_at": "2026-05-18T14:22:07Z",
+    "ended_at": "2026-05-18T16:48:33Z",
+    "duration_seconds": 8786,
+    "user_turns": 23,
+    "assistant_turns": 89,
+    "tool_calls": {
+      "Read": 47,
+      "Edit": 31,
+      "Write": 4,
+      "MultiEdit": 8,
+      "Bash": 22,
+      "Grep": 11,
+      "Glob": 6,
+      "Task": 3,
+      "WebFetch": 2,
+      "WebSearch": 1
+    },
+    "tool_calls_total": 135,
+    "files_touched": [
+      "skills/repo-publisher/SKILL.md",
+      "skills/repo-publisher/scripts/decide.py",
+      "skills/repo-publisher/references/state-schema.md",
+      "tests/test_repo_publisher.py"
+    ],
+    "files_touched_count": 4,
+    "bash_commands_count": 22,
+    "subagent_invocations": 3,
+    "cache_read_tokens": 4823104,
+    "cache_creation_tokens": 187442,
+    "summary": "Implemented state.json schema validation in repo-publisher; refactored decide.py to use new four-dimension scoring; added tests for the editorial calendar path.",
+    "prompts": [],
+    "jsonl_path": "/Users/david/.claude/projects/-Users-david-repos-atomic47-labs-scsiwyg/a3f2c91d-7b4e-4c8a-9f12-8e6d2b4a1c3f.jsonl"
+  },
+  "metrics": {
+    "session_minutes": 146.4,
+    "tools_per_minute": 0.92,
+    "session_size_class": "deep",
+    "agentic_ratio": 5.87
+  },
+  "raw": null,
+  "ingested_at": "2026-05-19T07:00:14Z",
+  "harvester_version": "1.0.0"
+}

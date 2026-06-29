@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-marketplace.json",
+  "name": "work-state",
+  "owner": {
+    "name": "Atomic 47 Labs",
+    "url": "https://atomic47.co"
+  },
+  "description": "The work-state marketplace — local-first work-intelligence skills for Claude Code.",
+  "plugins": [
+    {
+      "name": "work-state",
+      "source": "./plugin",
+      "version": "1.2.0",
+      "description": "Personal work intelligence facility. Harvests evidence of your work across GitHub, Gmail, Slack, Google Docs, scsiwyg, and Claude Code sessions into a local-first, schema-governed event store, then derives daily digests, weekly reports, and longitudinal intelligence. 9 skills + a local Next.js kanban/dashboard at port 3333.",
+      "author": {
+        "name": "Atomic 47 Labs",
+        "url": "https://atomic47.co"
+      },
+      "category": "productivity"
+    }
+  ]
+}

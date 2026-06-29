@@ -1,0 +1,42 @@
+# Slack channel filter rules
+# Channels matching any of these are skipped during scheduled harvests.
+# @mentions of the user in excluded channels are still captured if include_mentions_in_excluded.
+
+# ----- Exclude by name (glob patterns ok) -----
+exclude_channels:
+  - "#general"
+  - "#random"
+  - "#announcements"
+  - "#announcements-*"
+  - "#welcome"
+  - "#standup-bot"
+  - "#bots-*"
+  - "#alerts-*"
+  - "#monitoring-*"
+
+# ----- DM handling -----
+include_dms: true               # one-on-one DMs are signal; keep them
+include_group_dms: true         # group DMs are signal; keep them
+include_dms_with_bots: false    # DMs with bot users (Slackbot, etc.)
+
+# ----- Mention overrides -----
+# @mentions are signal even in noisy channels.
+include_mentions_in_excluded: true
+
+# ----- Reaction handling -----
+# Reactions create a lot of low-value events. Off by default.
+include_reactions_as_events: false
+
+# ----- Thread handling -----
+# If you reply in a thread, capture the entire thread (including messages from
+# others) so the digest has context. Default true.
+include_full_thread_when_replied: true
+
+# ----- Workspace allowlist -----
+# Empty = all configured workspaces. Useful if you want to exclude e.g. a
+# customer workspace that's noisy.
+allowed_workspaces: []
+
+# ----- File handling -----
+# Capture file uploads as separate events?
+include_file_share_events: true

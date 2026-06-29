@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "first_harvest_at": null,
+  "last_harvest_at": {
+    "github": null,
+    "scsiwyg": null,
+    "gmail": null,
+    "slack": null,
+    "gdocs": null,
+    "x": null,
+    "linkedin": null
+  },
+  "last_digest_at": null,
+  "last_weekly_at": null,
+  "last_longitudinal_at": null,
+  "counters": {
+    "events_total": 0,
+    "events_by_surface": {},
+    "events_by_type": {},
+    "events_by_project": {}
+  },
+  "active_locks": []
+}

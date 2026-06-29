@@ -1,0 +1,39 @@
+{
+  "id": "slack-share-2026-04-29-9a4f12",
+  "surface": "slack",
+  "type": "share",
+  "timestamp": "2026-04-29T15:18:42Z",
+  "project": "scsiwyg",
+  "themes": [],
+  "evidence": {
+    "workspace_id": "T0ABCDEFG",
+    "workspace_name": "atomic47",
+    "channel_id": "C01SCSIWYG",
+    "channel_name": "scsiwyg-eng",
+    "ts": "1714389522.123456",
+    "thread_ts": null,
+    "direction": "outbound",
+    "from_user_id": "U0DAVID",
+    "from_user_name": "david",
+    "text_excerpt": "Pushed the MCP draft tool with channel scoping. @hany worth a look — the channel buffer pattern matches what we discussed.",
+    "reactions": ["+1", "rocket"],
+    "reaction_count": 4,
+    "is_dm": false,
+    "is_thread_starter": true,
+    "is_reply_in_thread": false,
+    "is_mention": false,
+    "has_files": false,
+    "file_names": []
+  },
+  "metrics": {
+    "text_word_count": 23,
+    "reaction_count": 4,
+    "thread_reply_count": 2,
+    "channel_active_member_count": 7
+  },
+  "raw": {
+    "_comment": "Full Slack message payload, untruncated."
+  },
+  "ingested_at": "2026-04-30T06:02:14Z",
+  "harvester_version": "1.0.0"
+}

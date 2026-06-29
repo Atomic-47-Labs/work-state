@@ -1,0 +1,187 @@
+# ~/work-state/manifest.yaml
+# Personal work intelligence system — David Olsson / Stonemason
+# This is the identity and configuration of the work-state facility.
+# Edited by hand at setup; updated by skills only via work-state with locking.
+
+schema_version: "1.0"
+
+identity:
+  owner: "David Olsson"
+  alias: "Stonemason"
+  timezone: "America/Vancouver"
+  default_workday_start: "08:00"
+  default_workday_end: "18:00"
+
+# Surfaces — places work happens that we harvest from.
+# Each surface has a harvester skill (work-harvester-{key}) that knows how to
+# pull events, normalize them, and write them through work-state.
+surfaces:
+  github:
+    enabled: true
+    harvester: work-harvester-github
+    cadence: daily
+    auth: gh-cli                    # uses `gh` CLI; assumes already authenticated
+    repos_scope: owned              # owned | starred | all_accessible
+    include_private: true
+    event_types: [build, decide, draft]
+
+  scsiwyg:
+    enabled: true
+    harvester: work-harvester-scsiwyg
+    cadence: daily
+    auth: scsiwyg-mcp               # via MCP server at scsiwyg.com/api/mcp
+    blogs: [making-scsiwyg, quality-controls, oaira-mr, nutabu, commit-and-push, david]
+    event_types: [publish, draft]
+
+  gmail:
+    enabled: true
+    harvester: work-harvester-gmail
+    cadence: daily
+    auth: gmail-mcp
+    inbox_scope: primary            # primary | all
+    sent_scope: all
+    event_types: [share, receive]
+
+  slack:
+    enabled: true
+    harvester: work-harvester-slack
+    cadence: daily
+    auth: slack-mcp
+    workspaces: []                  # populated on first harvest
+    channels_scope: all_accessible
+    event_types: [share, receive]
+
+  gdocs:
+    enabled: true
+    harvester: work-harvester-gdocs
+    cadence: daily
+    auth: gdrive-mcp
+    folders_scope: all_owned
+    event_types: [draft, publish, share]
+
+  x:
+    enabled: true
+    harvester: work-harvester-x
+    cadence: daily
+    auth: manual_export             # X API is paid; default to manual export
+    event_types: [publish]
+
+  linkedin:
+    enabled: true
+    harvester: work-harvester-linkedin
+    cadence: daily
+    auth: manual_export             # LinkedIn API is restricted; manual export
+    event_types: [publish]
+
+# Projects — the conceptual buckets events get attributed to.
+# An event without a clear project lands in "unsorted" until tagged.
+# Skills can read this list to disambiguate (e.g., a commit to scsiwyg/repo
+# attributes to project "scsiwyg").
+projects:
+  - id: project-sunshine
+    aliases: [sunshine, "sovereign intelligence fabric", "Project Sunshine"]
+    portfolio: worksona
+    status: active
+    priority: 1
+
+  - id: scsiwyg
+    aliases: [scsiwyg, "headless blog"]
+    portfolio: atomic47
+    status: active
+    priority: 1
+
+  - id: emilyos
+    aliases: [emily, emilyos, "Emily"]
+    portfolio: worksona
+    status: active
+    priority: 2
+
+  - id: worksona
+    aliases: [worksona, "worksona platform"]
+    portfolio: worksona
+    status: active
+    priority: 1
+
+  - id: worksona-studio
+    aliases: ["worksona studio", studio]
+    portfolio: worksona
+    status: active
+    priority: 2
+
+  - id: oaira
+    aliases: [oaira, "OAIRA"]
+    portfolio: atomic47
+    status: active
+    priority: 2
+
+  - id: 8amai
+    aliases: ["8 AM AI", "8amai", "8am"]
+    portfolio: atomic47
+    status: designed
+    priority: 3
+
+  - id: woowoo
+    aliases: [woowoo]
+    portfolio: nutabu
+    status: production-bible-complete
+    priority: 3
+
+  - id: stone-maps
+    aliases: ["stone maps", stonemaps]
+    portfolio: personal
+    status: active
+    priority: 3
+
+  - id: emporium
+    aliases: ["dot emporium", emporium]
+    portfolio: personal
+    status: active
+    priority: 4
+
+# Themes — memetic tags that surface in events. The themes file
+# (longitudinal/themes.json) tracks these over time. This list is
+# bootstrap; new themes can be discovered by work-themes and added.
+bootstrap_themes:
+  - sovereignty
+  - bare-metal
+  - canadian-data-residency
+  - agent-orchestration
+  - skills-architecture
+  - documentation-driven
+  - methodology-as-infrastructure
+  - observable-reasoning
+  - simulate-before-deploy
+  - structural-sovereignty
+  - epistolary-narrative
+  - longitudinal-intelligence
+
+# Cadence — when scheduled jobs run. Times are in identity.timezone.
+cadence:
+  daily_harvest: "06:00"            # all enabled surfaces harvest
+  daily_digest: "07:30"             # work-daily-digest synthesizes events
+  weekly_report: "Monday 08:00"     # work-weekly-report runs on Mondays
+  longitudinal_refresh: "Sunday 22:00"  # themes, velocity, projects rebuild
+
+# Event envelope — common fields every event must carry.
+# This is the contract; surface harvesters fill in evidence/raw.
+event_envelope:
+  required:
+    - id              # surface-{type}-{date}-{hash}
+    - surface         # one of surfaces.* keys
+    - type            # build | publish | share | draft | receive | decide | learn
+    - timestamp       # ISO-8601 UTC
+    - project         # one of projects.*.id, or "unsorted"
+    - themes          # array of bootstrap_themes or new ones
+    - evidence        # surface-specific structured proof
+    - metrics         # numeric measures (lines, words, recipients, etc.)
+    - raw             # full untruncated source payload
+
+# State counters — bumped by work-state on every write.
+counters_initial:
+  events_total: 0
+  events_by_surface: {}
+  events_by_type: {}
+  events_by_project: {}
+  daily_digests: 0
+  weekly_reports: 0
+  longitudinal_rebuilds: 0

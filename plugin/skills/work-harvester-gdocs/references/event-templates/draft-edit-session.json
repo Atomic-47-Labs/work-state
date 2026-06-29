@@ -1,0 +1,32 @@
+{
+  "id": "gdocs-draft-2026-04-29-7d3c9a",
+  "surface": "gdocs",
+  "type": "draft",
+  "timestamp": "2026-04-29T16:42:18Z",
+  "project": "project-sunshine",
+  "themes": [],
+  "evidence": {
+    "doc_id": "1a2b3c4d5e6f7g8h9i0j",
+    "title": "Project Sunshine — Cost Model v3",
+    "url": "https://docs.google.com/document/d/1a2b3c4d5e6f7g8h9i0j/edit",
+    "subtype": "edit-session",
+    "edit_session_date": "2026-04-29",
+    "current_word_count": 4218,
+    "previous_word_count": 3806,
+    "words_added_estimate": 412,
+    "words_removed_estimate": 0,
+    "owner": "david@atomic47labs.com",
+    "folder_path": "/WORKSONA/sunshine/financials",
+    "shared_with_count": 4
+  },
+  "metrics": {
+    "current_word_count": 4218,
+    "word_delta": 412,
+    "absolute_word_change": 412
+  },
+  "raw": {
+    "_comment": "Full Drive file metadata payload, untruncated."
+  },
+  "ingested_at": "2026-04-30T06:03:14Z",
+  "harvester_version": "1.0.0"
+}

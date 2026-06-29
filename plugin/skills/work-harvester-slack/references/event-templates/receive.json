@@ -1,0 +1,39 @@
+{
+  "id": "slack-receive-2026-04-29-3b8e21",
+  "surface": "slack",
+  "type": "receive",
+  "timestamp": "2026-04-29T11:02:18Z",
+  "project": "project-sunshine",
+  "themes": [],
+  "evidence": {
+    "workspace_id": "T0ABCDEFG",
+    "workspace_name": "atomic47",
+    "channel_id": "D0BILLDM",
+    "channel_name": "DM with bill",
+    "ts": "1714381338.567890",
+    "thread_ts": null,
+    "direction": "inbound",
+    "from_user_id": "U0BILL",
+    "from_user_name": "bill",
+    "text_excerpt": "Got the cost model. Few questions on Year 2 OpEx — when are you free this week?",
+    "reactions": [],
+    "reaction_count": 0,
+    "is_dm": true,
+    "is_thread_starter": true,
+    "is_reply_in_thread": false,
+    "is_mention": false,
+    "has_files": false,
+    "file_names": []
+  },
+  "metrics": {
+    "text_word_count": 16,
+    "reaction_count": 0,
+    "thread_reply_count": 0,
+    "channel_active_member_count": 2
+  },
+  "raw": {
+    "_comment": "Full Slack message payload, untruncated."
+  },
+  "ingested_at": "2026-04-30T06:02:14Z",
+  "harvester_version": "1.0.0"
+}
